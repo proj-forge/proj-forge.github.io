@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from pprint import pprint
 
 from jinja2 import Environment, PackageLoader, select_autoescape

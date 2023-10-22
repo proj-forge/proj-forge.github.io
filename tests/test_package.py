@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 import importlib.metadata
 
 import projections_site as m
