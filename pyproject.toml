@@ -96,6 +96,14 @@ module = "projections_site.*"
 disallow_untyped_defs = true
 disallow_incomplete_defs = true
 
+[[tool.mypy.overrides]]
+module = [
+  "pyproj.*",
+  # "click.*",
+  "jinja2.*",
+]
+ignore_missing_imports = true
+
 
 [tool.ruff]
 select = [

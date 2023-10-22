@@ -8,6 +8,9 @@ systems. Like epsg.io, except for all coordinate reference systems in Proj.
 
 from __future__ import annotations
 
-from ._version import version as __version__
+# TODO: WTF, why doesn't this work?
+#       from ._version import version as __version__
+#     ModuleNotFoundError: No module named 'projections_site._version'
+# from ._version import version as __version__
 
 __all__ = ("__version__",)

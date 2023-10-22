@@ -56,8 +56,10 @@ repos:
       - id: mypy
         files: src|tests
         args: []
+        # TODO: This is a good reason _not_ to run mypy with pre-commit...
         additional_dependencies:
           - pytest
+          - click
 
   - repo: https://github.com/codespell-project/codespell
     rev: "v2.2.5"

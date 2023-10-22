@@ -1,3 +1,11 @@
+# Our rendered site
+/_site
+
+
+###################################
+# From Scientific Python template:
+###################################
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
