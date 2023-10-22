@@ -56,6 +56,11 @@ repos:
       - id: mypy
         files: src|tests
         args: []
+        # Mypy doesn't work so well when passed lists of files; it cares about
+        # context. For example, it doesn't handle `.py`/`.pyi` files of the
+        # same stem well:
+        #   https://webcache.googleusercontent.com/search?q=cache:WlcNrzZQAzUJ:https://github.com/pre-commit/mirrors-mypy/issues/20&hl=en&gl=us&client=firefox-b-1-d
+        pass_filenames: false
         # TODO: This is a good reason _not_ to run mypy with pre-commit...
         additional_dependencies:
           - pytest
