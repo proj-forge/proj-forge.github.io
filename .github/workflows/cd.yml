@@ -41,7 +41,7 @@ jobs:
           cache-environment: true
 
       - name: "Build site"
-        run: "PYTHONPATH=. python src/projections_site/cli.py"
+        run: "PYTHONPATH=src python src/projections_site/cli.py"
 
       - name: "Upload site artifact"
         uses: "actions/upload-pages-artifact@v1"
