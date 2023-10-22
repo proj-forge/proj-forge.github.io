@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "projections-site"
 authors = [
-  { name = "PyMRA", email = "noone@example.com" },
+  { name = "PyMRA", email = "no-one@example.com" },
 ]
 description = "A site for displaying rich information about coordinate reference systems. Like epsg.io, except for all coordinate reference systems in Proj."
 readme = "README.md"
