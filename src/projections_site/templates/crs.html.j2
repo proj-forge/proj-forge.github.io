@@ -20,7 +20,7 @@
     {# <p>WKT ESRI {{ crs.to_wkt(version="WKT1_ESRI", pretty=True) }}</p> #}
     <p>WKT2: {{ crs.to_wkt(version="WKT2_2019", pretty=True) }}</p>
     <p>JSON: {{ crs.to_json(pretty=True) }}</p>
-    <p>CF: {{ pprint(crs.to_cf()) }}</p>
+    <p>CF: {{ pformat(crs.to_cf()) }}</p>
 
     <footer>
         <p>Version: v{{ version }}</p>

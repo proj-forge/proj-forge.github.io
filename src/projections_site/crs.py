@@ -1,3 +1,4 @@
+# Enables using e.g. built-in `list` in annotations in Python 3.8:
 from __future__ import annotations
 
 from dataclasses import dataclass

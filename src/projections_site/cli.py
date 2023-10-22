@@ -1,9 +1,7 @@
 import click
-from pyproj import CRS
 
-from projections_site.constants.paths import SITE_DIR
-from projections_site.constants.templates import TEMPLATES
 from projections_site.crs import get_all_crs
+from projections_site.render import render_crs_index_html, render_crs_to_html
 
 OUTPUT_DIR = "_site"
 
@@ -12,16 +10,9 @@ OUTPUT_DIR = "_site"
 def cli() -> None:
     all_crs = get_all_crs()
     for crs_id in all_crs:
-        output_fn = f"{crs_id.authority}-{crs_id.code}.html"
-        output_path = SITE_DIR / output_fn
-        SITE_DIR.mkdir(exist_ok=True)
+        render_crs_to_html(crs_id)
 
-        crs = CRS((crs_id.authority, crs_id.code))
-
-        rendered = TEMPLATES["crs"].render(crs=crs, version="foo")
-
-        with output_path.open("w") as f:
-            f.write(rendered)
+    render_crs_index_html(all_crs)
 
 
 if __name__ == "__main__":
