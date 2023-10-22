@@ -8,15 +8,19 @@
 
     <p>WKT: {{ crs.to_wkt() }}</p>
     <p>Unit: {{ crs.axis_info[0].unit_name }}</p>
-    <p>Geodetic CRS: {{ util.get_geodetic_crs(crs) }}</p>
-    <p>Datum: {{util.get_datum_name(crs)}}</p>
-    <p>Data Source: EPSG  {{util.get_epsg_version_string()}}</p>
-    <p>Scope: {{crs.scope}}</p>
-    <p>Remarks: {{crs.remarks}}</p>
-    <p>Area of use: {{crs.area_of_use.name}}</p>
-    <p>Coordinate System: {{util.get_coordinate_system(crs)}}</p>
-    <p>Projection: {{util.get_coordinate_operation(crs)}}</p>
-    <p>Proj4: {{crs.to_proj4()}} </p>
+    {# <p>Geodetic CRS: {{ util.get_geodetic_crs(crs) }}</p> #}
+    {# <p>Datum: {{ util.get_datum_name(crs) }}</p> #}
+    {# <p>Data Source: EPSG  {{ util.get_epsg_version_string() }}</p> #}
+    <p>Scope: {{ crs.scope }}</p>
+    <p>Remarks: {{ crs.remarks }}</p>
+    <p>Area of use: {{ crs.area_of_use.name }}</p>
+    {# <p>Coordinate System: {{ util.get_coordinate_system(crs) }}</p> #}
+    {# <p>Projection: {{ util.get_coordinate_operation(crs) }}</p> #}
+    <p>Proj4: {{ crs.to_proj4() }} </p>
+    <p>WKT ESRI {{ crs.to_wkt(version="WKT1_ESRI", pretty=True) }}</p>
+    <p>WKT2: {{ crs.to_wkt(version="WKT2_2019", pretty=True) }}</p>
+    <p>JSON: {{ crs.json(pretty=True) }}</p>
+    <p>CF: {{ pprint(crs.to_cf()) }}</p>
 
     <footer>
         <p>Version: v{{ version }}</p>
