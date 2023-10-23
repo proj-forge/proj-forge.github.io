@@ -1,13 +1,9 @@
-<!doctype html>
+{% extends 'base.html.j2' %}
 
-<head>
-    <title>{{ crs | string }}</title>
-</head>
+{% block title %}{{ crs | string }}{% endblock %}
+{% block header %}{{ crs | string }} - <i>{{ crs.name }}</i>{% endblock %}
 
-<body>
-    <h1>{{ crs | string }} - <i>{{ crs.name }}</i><h1>
-
-
+{% block content %}
     <h2>Attributes</h2>
 
     <h3>Unit</h3>
@@ -43,11 +39,11 @@
     <h3>Proj4</h3>
     <pre>{{ crs.to_proj4() }} </pre>
 
-    <h3>WKT_GDAL</h3>
+    <h3>WKT1</h3>
     <pre>{{ crs.to_wkt() }}</pre>
     <pre>{{ crs.to_wkt(version="WKT1_GDAL", pretty=True) }}</pre>
 
-    <h3>WKT_ESRI</h3>
+    <h3>WKT1_ESRI</h3>
     <p>WKT ESRI {{ crs.to_wkt(version="WKT1_ESRI", pretty=True) }}</p>
     #}
 
@@ -56,11 +52,4 @@
 
     <h3>CF</h3>
     <pre>{{ pformat(crs.to_cf()) }}</pre>
-
-
-    <hr />
-    <footer>
-        <p>Version: v{{ version }}</p>
-    </footer>
-
-</body>
+{% endblock %}

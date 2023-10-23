@@ -1,15 +1,12 @@
-<!doctype html>
+{% extends 'base.html.j2' %}
 
-<head>
-    <title>Coordinate reference systems (CRS / SRS)</title>
-</head>
+{% block title %}Coordinate reference systems (CRS / SRS){% endblock %}
+{% block header %}Coordinate reference systems (CRS / SRS){% endblock %}
 
-<body>
-
+{% block content %}
   <ul>
     {% for element in elements %}
       <li><a href={{ element.href }}>{{element.name}}</a></li>
     {% endfor %}
   </ul>
-
-</body>
+{% endblock %}
