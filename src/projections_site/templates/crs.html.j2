@@ -1,27 +1,64 @@
 <!doctype html>
 
 <head>
-    <title>{{ crs.name }}</title>
+    <title>{{ crs | string }}</title>
 </head>
 
 <body>
+    <h1>{{ crs | string }} - <i>{{ crs.name }}</i><h1>
 
-    <p>WKT: {{ crs.to_wkt() }}</p>
-    <p>Unit: {{ crs.axis_info[0].unit_name }}</p>
-    {# <p>Geodetic CRS: {{ util.get_geodetic_crs(crs) }}</p> #}
-    {# <p>Datum: {{ util.get_datum_name(crs) }}</p> #}
-    {# <p>Data Source: EPSG  {{ util.get_epsg_version_string() }}</p> #}
-    <p>Scope: {{ crs.scope }}</p>
-    <p>Remarks: {{ crs.remarks }}</p>
-    <p>Area of use: {{ crs.area_of_use.name }}</p>
-    {# <p>Coordinate System: {{ util.get_coordinate_system(crs) }}</p> #}
-    {# <p>Projection: {{ util.get_coordinate_operation(crs) }}</p> #}
-    {# <p>Proj4: {{ crs.to_proj4() }} </p> #}
-    {# <p>WKT ESRI {{ crs.to_wkt(version="WKT1_ESRI", pretty=True) }}</p> #}
-    <p>WKT2: {{ crs.to_wkt(version="WKT2_2019", pretty=True) }}</p>
-    <p>JSON: {{ crs.to_json(pretty=True) }}</p>
-    <p>CF: {{ pformat(crs.to_cf()) }}</p>
 
+    <h2>Attributes</h2>
+
+    <h3>Unit</h3>
+    <p>{{ crs.axis_info[0].unit_name }}</p>
+
+    <h3>Scope</h3>
+    <p>{{ crs.scope }}</p>
+
+    <h3>Remarks</h3>
+    <p>{{ crs.remarks }}</p>
+
+    <h3>Area of use</h3>
+    <p>{{ crs.area_of_use.name }}</p>
+
+    {# TODO:
+    <p>Geodetic CRS: {{ util.get_geodetic_crs(crs) }}</p>
+    <p>Datum: {{ util.get_datum_name(crs) }}</p>
+    <p>Data Source: EPSG  {{ util.get_epsg_version_string() }}</p>
+    <p>Coordinate System: {{ util.get_coordinate_system(crs) }}</p>
+    <p>Projection: {{ util.get_coordinate_operation(crs) }}</p>
+    #}
+
+
+    <h2>Export</h2>
+
+    <h3>WKT2</h3>
+    {# The default version is WKT2_2019:
+         https://pyproj4.github.io/pyproj/stable/api/crs/crs.html#pyproj.crs.CRS.to_wkt #}
+    {# <pre>{{ crs.to_wkt(version="WKT2_2019", pretty=True) }}</pre> #}
+    <pre>{{ crs.to_wkt(version="WKT2_2019", pretty=True) }}</pre>
+
+    {#
+    <h3>Proj4</h3>
+    <pre>{{ crs.to_proj4() }} </pre>
+
+    <h3>WKT_GDAL</h3>
+    <pre>{{ crs.to_wkt() }}</pre>
+    <pre>{{ crs.to_wkt(version="WKT1_GDAL", pretty=True) }}</pre>
+
+    <h3>WKT_ESRI</h3>
+    <p>WKT ESRI {{ crs.to_wkt(version="WKT1_ESRI", pretty=True) }}</p>
+    #}
+
+    <h3>JSON</h3>
+    <pre>{{ crs.to_json(pretty=True) }}</pre>
+
+    <h3>CF</h3>
+    <pre>{{ pformat(crs.to_cf()) }}</pre>
+
+
+    <hr />
     <footer>
         <p>Version: v{{ version }}</p>
     </footer>
