@@ -29,27 +29,86 @@
 
     <h2>Export</h2>
 
-    <h3>WKT2</h3>
-    {# The default version is WKT2_2019:
-         https://pyproj4.github.io/pyproj/stable/api/crs/crs.html#pyproj.crs.CRS.to_wkt #}
-    {# <pre>{{ crs.to_wkt(version="WKT2_2019", pretty=True) }}</pre> #}
-    <pre>{{ crs.to_wkt(version="WKT2_2019", pretty=True) }}</pre>
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <button
+                class="nav-link active"
+                id="wkt2-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#wkt2-tab-pane"
+                type="button"
+                role="tab"
+                aria-controls="home-tab-pane"
+                aria-selected="true">
+                WKT2
+            </button>
+            <!--<a class="nav-link active" aria-current="page" href="#">WKT2</a>-->
+        </li>
 
-    {#
-    <h3>Proj4</h3>
-    <pre>{{ crs.to_proj4() }} </pre>
+        <li class="nav-item">
+          <button
+                class="nav-link"
+                id="json-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#json-tab-pane"
+                type="button"
+                role="tab"
+                aria-controls="json-tab-pane"
+                aria-selected="false">
+              JSON
+          </button>
+        </li>
 
-    <h3>WKT1</h3>
-    <pre>{{ crs.to_wkt() }}</pre>
-    <pre>{{ crs.to_wkt(version="WKT1_GDAL", pretty=True) }}</pre>
+        <li class="nav-item">
+          <button
+                class="nav-link"
+                id="cf-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#cf-tab-pane"
+                type="button"
+                role="tab"
+                aria-controls="cf-tab-pane"
+                aria-selected="false">
+              CF
+          </button>
+        </li>
 
-    <h3>WKT1_ESRI</h3>
-    <p>WKT ESRI {{ crs.to_wkt(version="WKT1_ESRI", pretty=True) }}</p>
-    #}
+        {# TODO:
+        Proj4: {{ crs.to_proj4() }}
+        WKT1: {{ crs.to_wkt(version="WKT1_GDAL", pretty=True) }}
+        WKT1_ESRI: {{ crs.to_wkt(version="WKT1_ESRI", pretty=True) }}
+        #}
+    </ul>
 
-    <h3>JSON</h3>
-    <pre>{{ crs.to_json(pretty=True) }}</pre>
 
-    <h3>CF</h3>
-    <pre>{{ pformat(crs.to_cf()) }}</pre>
+    <div class="tab-content">
+        <div
+            class="tab-pane fade show active"
+            id="wkt2-tab-pane"
+            role="tabpanel"
+            aria-labelledby="wkt2-tab"
+            tabindex="0">
+            {# The default version is WKT2_2019:
+                 https://pyproj4.github.io/pyproj/stable/api/crs/crs.html#pyproj.crs.CRS.to_wkt #}
+            {# <pre>{{ crs.to_wkt(version="WKT2_2019", pretty=True) }}</pre> #}
+            <pre>{{ crs.to_wkt(version="WKT2_2019", pretty=True) }}</pre>
+        </div>
+        <div
+            class="tab-pane fade"
+            id="json-tab-pane"
+            role="tabpanel"
+            aria-labelledby="json-tab"
+            tabindex="0">
+            <pre>{{ crs.to_json(pretty=True) }}</pre>
+        </div>
+        <div
+            class="tab-pane fade"
+            id="cf-tab-pane"
+            role="tabpanel"
+            aria-labelledby="cf-tab"
+            tabindex="0">
+            <pre>{{ pformat(crs.to_cf()) }}</pre>
+        </div>
+    </div>
+
 {% endblock %}
