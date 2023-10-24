@@ -68,3 +68,16 @@ HTML pages.
 - Enable accessing old versions of the dataset. Right now the data is ~100MB,
   and I think GitHub Pages' limit is 1GB, so we'd start to incur costs if we
   store too much history.
+
+## Acknowledgements
+
+Prototype developed in a group programming session with:
+
+- [Arie Knoester](https://github.com/arieknoester)
+- [Robin Fisher](https://github.com/itsarobin)
+
+Inspired by discussions with [Trey Stafford](https://github.com/trey-stafford/).
+
+Inspired by discussions with and
+[prototype](https://github.com/andypbarrett/epsg-site-demo) by
+[Andy Barrett](https://github.com/andypbarrett).
