@@ -73,7 +73,8 @@ HTML pages.
 
 Prototype developed in a group programming session with
 [Arie Knoester](https://github.com/arieknoester),
-[Robin Fisher](https://github.com/itsarobin).
+[Robin Fisher](https://github.com/itsarobin),
+[Matt Fisher](https://github.com/mfisher87)
 
 Inspired by discussions with [Trey Stafford](https://github.com/trey-stafford/).
 
