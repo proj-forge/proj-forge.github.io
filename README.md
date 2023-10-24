@@ -71,10 +71,9 @@ HTML pages.
 
 ## Acknowledgements
 
-Prototype developed in a group programming session with:
-
-- [Arie Knoester](https://github.com/arieknoester)
-- [Robin Fisher](https://github.com/itsarobin)
+Prototype developed in a group programming session with
+[Arie Knoester](https://github.com/arieknoester),
+[Robin Fisher](https://github.com/itsarobin).
 
 Inspired by discussions with [Trey Stafford](https://github.com/trey-stafford/).
 
