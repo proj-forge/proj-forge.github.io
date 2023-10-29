@@ -8,7 +8,7 @@ from pyproj import CRS
 from projections_site.constants.paths import SITE_DIR
 from projections_site.constants.templates import TEMPLATES
 from projections_site.crs import AuthorityCode
-
+import util
 
 def _crs_html_filepath(crs_id: AuthorityCode) -> Path:
     output_fn = f"{crs_id.authority}-{crs_id.code}.html"
@@ -22,7 +22,7 @@ def _write_to_file(output_path: Path, content: str) -> None:
 
 def render_crs_to_html(crs_id: AuthorityCode) -> None:
     crs = CRS((crs_id.authority, crs_id.code))
-    rendered = TEMPLATES["crs"].render(crs=crs)
+    rendered = TEMPLATES["crs"].render(crs=crs, util=util)
 
     output_path = _crs_html_filepath(crs_id)
     output_path.parent.mkdir(exist_ok=True)
