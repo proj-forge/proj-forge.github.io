@@ -32,6 +32,6 @@ def get_coordinate_operation(crs):
 def get_epsg_version_string():
     """Returns version and revision date of EPSG Database"""
     return (
-        f"{pyproj.database.get_database_metadata('EPSG.VERSION')},  "
-        f"{pyproj.database.get_database_metadata('EPSG.DATE')}"
+        f"{pyproj.database.get_database_metadata('EPSG.VERSION')}"
+        f" ({pyproj.database.get_database_metadata('EPSG.DATE')})"
     )
