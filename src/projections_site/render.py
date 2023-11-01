@@ -3,9 +3,9 @@ from __future__ import annotations
 
 from pathlib import Path
 
-import util
 from pyproj import CRS
 
+import projections_site.util as util
 from projections_site.constants.paths import SITE_DIR
 from projections_site.constants.templates import TEMPLATES
 from projections_site.crs import AuthorityCode
