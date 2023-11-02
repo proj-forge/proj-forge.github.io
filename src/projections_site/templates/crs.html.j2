@@ -21,15 +21,9 @@
     <p>Datum: {{util.get_datum(crs)}}</p>
     <p>Coordinate System: {{ util.get_coordinate_system(crs) }}</p>
     <p>Projection: {{ util.get_coordinate_operation(crs) }}</p>
-  {# TODO
-   #<p>Coordinate System: {{ util.get_coordinate_system(crs) }}</p>
-   #<p>Geodetic CRS: {{ util. get_geodetic_crs(crs) }}</p>
-  #}
-
-
+    <p>Geodetic CRS: {{ util.get_geodetic_crs(crs) }}</p>
 
     <h2>Export</h2>
-
     <ul class="nav nav-tabs">
         <li class="nav-item">
             <button

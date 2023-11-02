@@ -1,35 +1,41 @@
 """Utilities for parsing CRS"""
 
-from typing import Any
-
 import pyproj
 
 
-def get_datum(crs: pyproj.CRS) -> Any:
+def get_datum(crs: pyproj.CRS) -> str:
     """Returns datum name"""
     try:
         datum_name = crs.datum
     except Exception:
         datum_name = "Undefined"
-    return datum_name
+    return str(datum_name)
 
 
-def get_coordinate_system(crs: pyproj.CRS) -> Any:
+def get_coordinate_system(crs: pyproj.CRS) -> str:
     """Returns coordinate system name"""
     try:
         coord_system = crs.coordinate_system.name
     except Exception:
         coord_system = "Undefined"
-    return coord_system
+    return str(coord_system)
 
 
-def get_coordinate_operation(crs: pyproj.CRS) -> Any:
+def get_geodetic_crs(crs: pyproj.CRS) -> str:
+    try:
+        crs_name = crs.name
+    except Exception:
+        crs_name = "Undefined"
+    return str(crs_name)
+
+
+def get_coordinate_operation(crs: pyproj.CRS) -> str:
     """Returns name of projection"""
     try:
         proj_name = crs.coordinate_operation.name
     except Exception:
         proj_name = "Undefined"
-    return proj_name
+    return str(proj_name)
 
 
 def get_epsg_version_string() -> str:
