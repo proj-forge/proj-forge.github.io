@@ -23,7 +23,7 @@ def get_coordinate_system(crs: pyproj.CRS) -> str:
 
 def get_geodetic_crs(crs: pyproj.CRS) -> str:
     try:
-        crs_name = crs.name
+        crs_name = crs.source_crs.to_json_dict()["name"]
     except Exception:
         crs_name = "Undefined"
     return str(crs_name)
