@@ -19,11 +19,12 @@
 
         <h3>Remarks</h3>
         <p>{{ crs.remarks }}</p>
+
+        <h3>Area of use</h3>
+        <p>{{ crs.area_of_use.name }}</p>
     </div>
 
     <div class="col-md-4">
-        <h3>Area of use</h3>
-        <p>{{ crs.area_of_use.name }}</p>
         <p><strong>Data Source</strong>: EPSG  {{ util.get_epsg_version_string() }}</p>
         <p><strong>Datum</strong>: {{util.get_datum(crs)}}</p>
         <p><strong>Coordinate System</strong>: {{ util.get_coordinate_system(crs) }}</p>
