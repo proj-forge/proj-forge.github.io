@@ -4,106 +4,114 @@
 {% block header %}{{ crs | string }} - <i>{{ crs.name }}</i>{% endblock %}
 
 {% block content %}
-    <h2>Attributes</h2>
 
-    <h3>Unit</h3>
-    <p>{{ crs.axis_info[0].unit_name }}</p>
-
-    <h3>Scope</h3>
-    <p>{{ crs.scope }}</p>
-
-    <h3>Remarks</h3>
-    <p>{{ crs.remarks }}</p>
-
-    <h3>Area of use</h3>
-    <p>{{ crs.area_of_use.name }}</p>
-    <p>Data Source: EPSG  {{ util.get_epsg_version_string() }}</p>
-    <p>Datum: {{util.get_datum(crs)}}</p>
-    <p>Coordinate System: {{ util.get_coordinate_system(crs) }}</p>
-    <p>Projection: {{ util.get_coordinate_operation(crs) }}</p>
-    <p>Geodetic CRS: {{ util.get_geodetic_crs(crs) }}</p>
-
-    <h2>Export</h2>
-    <ul class="nav nav-tabs">
-        <li class="nav-item">
-            <button
-                class="nav-link active"
-                id="wkt2-tab"
-                data-bs-toggle="tab"
-                data-bs-target="#wkt2-tab-pane"
-                type="button"
-                role="tab"
-                aria-controls="home-tab-pane"
-                aria-selected="true">
-                WKT2
-            </button>
-            <!--<a class="nav-link active" aria-current="page" href="#">WKT2</a>-->
-        </li>
-
-        <li class="nav-item">
-          <button
-                class="nav-link"
-                id="json-tab"
-                data-bs-toggle="tab"
-                data-bs-target="#json-tab-pane"
-                type="button"
-                role="tab"
-                aria-controls="json-tab-pane"
-                aria-selected="false">
-              JSON
-          </button>
-        </li>
-
-        <li class="nav-item">
-          <button
-                class="nav-link"
-                id="cf-tab"
-                data-bs-toggle="tab"
-                data-bs-target="#cf-tab-pane"
-                type="button"
-                role="tab"
-                aria-controls="cf-tab-pane"
-                aria-selected="false">
-              CF
-          </button>
-        </li>
-
-        {# TODO:
-        Proj4: {{ crs.to_proj4() }}
-        WKT1: {{ crs.to_wkt(version="WKT1_GDAL", pretty=True) }}
-        WKT1_ESRI: {{ crs.to_wkt(version="WKT1_ESRI", pretty=True) }}
-        #}
-    </ul>
-
-
-    <div class="tab-content">
-        <div
-            class="tab-pane fade show active"
-            id="wkt2-tab-pane"
-            role="tabpanel"
-            aria-labelledby="wkt2-tab"
-            tabindex="0">
-            {# The default version is WKT2_2019:
-                 https://pyproj4.github.io/pyproj/stable/api/crs/crs.html#pyproj.crs.CRS.to_wkt #}
-            {# <pre>{{ crs.to_wkt(version="WKT2_2019", pretty=True) }}</pre> #}
-            <pre>{{ crs.to_wkt(version="WKT2_2019", pretty=True) }}</pre>
-        </div>
-        <div
-            class="tab-pane fade"
-            id="json-tab-pane"
-            role="tabpanel"
-            aria-labelledby="json-tab"
-            tabindex="0">
-            <pre>{{ crs.to_json(pretty=True) }}</pre>
-        </div>
-        <div
-            class="tab-pane fade"
-            id="cf-tab-pane"
-            role="tabpanel"
-            aria-labelledby="cf-tab"
-            tabindex="0">
-            <pre>{{ pformat(crs.to_cf()) }}</pre>
-        </div>
+    <div class="row">
+        <h2 class="mt-4 fs-3">Attributes</h2>
+        <hr>
     </div>
 
+    <div class="col-md-4">
+        <h3>Unit</h3>
+        <p>{{ crs.axis_info[0].unit_name }}</p>
+
+        <h3>Scope</h3>
+        <p>{{ crs.scope }}</p>
+
+        <h3>Remarks</h3>
+        <p>{{ crs.remarks }}</p>
+
+        <h3>Area of use</h3>
+        <p>{{ crs.area_of_use.name }}</p>
+    </div>
+
+    <div class="col-md-4">
+        <p><strong>Data Source</strong>: EPSG  {{ util.get_epsg_version_string() }}</p>
+        <p><strong>Datum</strong>: {{util.get_datum(crs)}}</p>
+        <p><strong>Coordinate System</strong>: {{ util.get_coordinate_system(crs) }}</p>
+        <p><strong>Projection</strong>: {{ util.get_coordinate_operation(crs) }}</p>
+        <p><strong>Geodetic CRS</strong>: {{ util.get_geodetic_crs(crs) }}</p>
+    </div>
+
+     <div class="row">
+         <h2 class="mt-4">Export</h2>
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <button
+                        class="nav-link active"
+                        id="wkt2-tab"
+                        data-bs-toggle="tab"
+                        data-bs-target="#wkt2-tab-pane"
+                        type="button"
+                        role="tab"
+                        aria-controls="home-tab-pane"
+                        aria-selected="true">
+                        WKT2
+                    </button>
+                    <!--<a class="nav-link active" aria-current="page" href="#">WKT2</a>-->
+                </li>
+
+                <li class="nav-item">
+                <button
+                        class="nav-link"
+                        id="json-tab"
+                        data-bs-toggle="tab"
+                        data-bs-target="#json-tab-pane"
+                        type="button"
+                        role="tab"
+                        aria-controls="json-tab-pane"
+                        aria-selected="false">
+                    JSON
+                </button>
+                </li>
+
+                <li class="nav-item">
+                <button
+                        class="nav-link"
+                        id="cf-tab"
+                        data-bs-toggle="tab"
+                        data-bs-target="#cf-tab-pane"
+                        type="button"
+                        role="tab"
+                        aria-controls="cf-tab-pane"
+                        aria-selected="false">
+                    CF
+                </button>
+                </li>
+
+                {# TODO:
+                Proj4: {{ crs.to_proj4() }}
+                WKT1: {{ crs.to_wkt(version="WKT1_GDAL", pretty=True) }}
+                WKT1_ESRI: {{ crs.to_wkt(version="WKT1_ESRI", pretty=True) }}
+                #}
+            </ul>
+        <div class="tab-content">
+            <div
+                class="tab-pane fade show active"
+                id="wkt2-tab-pane"
+                role="tabpanel"
+                aria-labelledby="wkt2-tab"
+                tabindex="0">
+                {# The default version is WKT2_2019:
+                    https://pyproj4.github.io/pyproj/stable/api/crs/crs.html#pyproj.crs.CRS.to_wkt #}
+                {# <pre>{{ crs.to_wkt(version="WKT2_2019", pretty=True) }}</pre> #}
+                <pre>{{ crs.to_wkt(version="WKT2_2019", pretty=True) }}</pre>
+            </div>
+            <div
+                class="tab-pane fade"
+                id="json-tab-pane"
+                role="tabpanel"
+                aria-labelledby="json-tab"
+                tabindex="0">
+                <pre>{{ crs.to_json(pretty=True) }}</pre>
+            </div>
+            <div
+                class="tab-pane fade"
+                id="cf-tab-pane"
+                role="tabpanel"
+                aria-labelledby="cf-tab"
+                tabindex="0">
+                <pre>{{ pformat(crs.to_cf()) }}</pre>
+            </div>
+        </div>
+    </div>
 {% endblock %}
