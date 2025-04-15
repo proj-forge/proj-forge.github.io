@@ -5,33 +5,35 @@
 
 {% block content %}
 
+<div class="container">
     <div class="row">
         <h2 class="mt-4 fs-3">Attributes</h2>
         <hr>
     </div>
 
-    <div class="col-md-4">
-        <h3>Unit</h3>
-        <p>{{ crs.axis_info[0].unit_name }}</p>
+    <div class="row">
+        <div class="col-sm-6">
+            <h3>Unit</h3>
+            <p>{{ crs.axis_info[0].unit_name }}</p>
 
-        <h3>Scope</h3>
-        <p>{{ crs.scope }}</p>
+            <h3>Scope</h3>
+            <p>{{ crs.scope }}</p>
 
-        <h3>Remarks</h3>
-        <p>{{ crs.remarks }}</p>
+            <h3>Remarks</h3>
+            <p>{{ crs.remarks }}</p>
 
-        <h3>Area of use</h3>
-        <p>{{ crs.area_of_use.name }}</p>
+            <h3>Area of use</h3>
+            <p>{{ crs.area_of_use.name }}</p>
+        </div>
+
+        <div class="col-sm-6">
+            <p><strong>Data Source</strong>: EPSG  {{ util.get_epsg_version_string() }}</p>
+            <p><strong>Datum</strong>: {{util.get_datum(crs)}}</p>
+            <p><strong>Coordinate System</strong>: {{ util.get_coordinate_system(crs) }}</p>
+            <p><strong>Projection</strong>: {{ util.get_coordinate_operation(crs) }}</p>
+            <p><strong>Geodetic CRS</strong>: {{ util.get_geodetic_crs(crs) }}</p>
+        </div>
     </div>
-
-    <div class="col-md-4">
-        <p><strong>Data Source</strong>: EPSG  {{ util.get_epsg_version_string() }}</p>
-        <p><strong>Datum</strong>: {{util.get_datum(crs)}}</p>
-        <p><strong>Coordinate System</strong>: {{ util.get_coordinate_system(crs) }}</p>
-        <p><strong>Projection</strong>: {{ util.get_coordinate_operation(crs) }}</p>
-        <p><strong>Geodetic CRS</strong>: {{ util.get_geodetic_crs(crs) }}</p>
-    </div>
-
      <div class="row">
          <h2 class="mt-4">Export</h2>
             <ul class="nav nav-tabs">
@@ -85,6 +87,7 @@
                 #}
             </ul>
         <div class="tab-content">
+
             <div
                 class="tab-pane fade show active"
                 id="wkt2-tab-pane"
@@ -94,7 +97,12 @@
                 {# The default version is WKT2_2019:
                     https://pyproj4.github.io/pyproj/stable/api/crs/crs.html#pyproj.crs.CRS.to_wkt #}
                 {# <pre>{{ crs.to_wkt(version="WKT2_2019", pretty=True) }}</pre> #}
-                <pre>{{ crs.to_wkt(version="WKT2_2019", pretty=True) }}</pre>
+                 <div class="top-right">
+                    <button type="button" class="btn btn-outline-light" data-bs-placement="bottom" data-bs-original-title="Copy to clipboard" onclick="copyText('wkt-text')" >
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="24" height="24" viewBox="0 0 24 24"><path d="M17,9H7V7H17M17,13H7V11H17M14,17H7V15H14M12,3A1,1 0 0,1 13,4A1,1 0 0,1 12,5A1,1 0 0,1 11,4A1,1 0 0,1 12,3M19,3H14.82C14.4,1.84 13.3,1 12,1C10.7,1 9.6,1.84 9.18,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3Z" /></svg>
+                    </button>
+                </div>
+                <pre id="wkt-text">{{ crs.to_wkt(version="WKT2_2019", pretty=True) }}</pre>
             </div>
             <div
                 class="tab-pane fade"
@@ -102,7 +110,12 @@
                 role="tabpanel"
                 aria-labelledby="json-tab"
                 tabindex="0">
-                <pre>{{ crs.to_json(pretty=True) }}</pre>
+                <div class="top-right">
+                    <button type="button"  class="btn btn-outline-light"  onclick="copyText('json-text')" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Copy to clipboard">
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="24" height="24" viewBox="0 0 24 24"><path d="M17,9H7V7H17M17,13H7V11H17M14,17H7V15H14M12,3A1,1 0 0,1 13,4A1,1 0 0,1 12,5A1,1 0 0,1 11,4A1,1 0 0,1 12,3M19,3H14.82C14.4,1.84 13.3,1 12,1C10.7,1 9.6,1.84 9.18,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3Z" /></svg>
+                    </button>
+                </div>
+                <pre id="json-text">{{ crs.to_json(pretty=True) }}</pre>
             </div>
             <div
                 class="tab-pane fade"
@@ -110,8 +123,17 @@
                 role="tabpanel"
                 aria-labelledby="cf-tab"
                 tabindex="0">
-                <pre>{{ pformat(crs.to_cf()) }}</pre>
+
+                    <div class="top-right">
+                    <button type="button"  class="btn btn-outline-light" data-bs-original-title="Copy to clipboard" data-toggle="tooltip" data-placement="bottom" onclick="copyText('cf-text')">
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="24" height="24" viewBox="0 0 24 24"><path d="M17,9H7V7H17M17,13H7V11H17M14,17H7V15H14M12,3A1,1 0 0,1 13,4A1,1 0 0,1 12,5A1,1 0 0,1 11,4A1,1 0 0,1 12,3M19,3H14.82C14.4,1.84 13.3,1 12,1C10.7,1 9.6,1.84 9.18,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3Z" /></svg>
+                    </button>
+                </div>
+
+                <pre id="cf-text">{{ pformat(crs.to_cf()) }}</pre>
+
             </div>
         </div>
     </div>
+</div>
 {% endblock %}
